@@ -26,6 +26,7 @@ function Upload({ setLoading, setTranscript }) {
               (progressEvent.loaded * 100) / progressEvent.total
             );
             setProgress(percent);
+	    <p>Uploading: {progress}%</p>
             console.log("Upload Progress:", percent + "%");
           },
         }
