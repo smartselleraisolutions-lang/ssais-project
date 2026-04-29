@@ -15,7 +15,7 @@ function Upload({ setLoading, setTranscript }) {
 
     try {
       const res = await axios.post(
-        "http://127.0.0.1:5000/process",
+        "https://ssais-api.onrender.com/process",
         formData,
         {
           headers: {

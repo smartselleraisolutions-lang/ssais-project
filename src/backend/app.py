@@ -11,6 +11,7 @@ import sys
 
 from faster_whisper import WhisperModel
 from pyannote.audio import Pipeline
+from flask_cors import CORS
 
 import librosa
 import torch
@@ -20,9 +21,12 @@ import torch
 # INIT APP
 # -------------------------
 app = Flask(__name__)
-CORS(app)
+@app.route("/")
+def home():
+    return "SSAIS API is running 🚀"
 
-
+CORS(app, origins=["https://ssais-project.vercel.app"])
+app.config['MAX_CONTENT_LENGTH'] = 200 * 1024 * 1024  # 200MB
 
 UPLOAD_FOLDER = "uploads"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
@@ -204,5 +208,4 @@ def process():
 # -------------------------
  
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))
-    app.run(host="0.0.0.0", port=port)
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
