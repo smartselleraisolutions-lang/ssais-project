@@ -40,14 +40,14 @@ HF_TOKEN = os.environ.get("HF_TOKEN")
 print("🚀 Loading models...")
 
 whisper_model = WhisperModel(
-    "large-v3",  # change to small for faster
+    "tiny",  # change to small for faster
     compute_type="int8"
 )
 
-pipeline = Pipeline.from_pretrained(
-    "pyannote/speaker-diarization-3.1",
-    token=HF_TOKEN
-)
+#pipeline = Pipeline.from_pretrained(
+#    "pyannote/speaker-diarization-3.1",
+#    token=HF_TOKEN
+#)
 
 print("✅ Models loaded")
 
