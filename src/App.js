@@ -6,6 +6,10 @@ import Upload from "./components/Upload";
 import Loader from "./components/Loader";
 import Transcript from "./components/Transcript";
 import Home from "./components/Home";
+import Enquiry from "./components/Enquiry";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+
 
 import "./App.css";
 
@@ -55,7 +59,13 @@ function App() {
           }
         />
       </Routes>
+
     </Router>
+<Router>
+  <Routes>
+    <Route path="/enquiry" element={<Enquiry />} />
+  </Routes>
+</Router>
   );
 }
 

@@ -7,7 +7,8 @@ import imageio_ffmpeg as ffmpeg
 import subprocess
 import sys
 
- 
+ from flask import request, jsonify
+
 
 from faster_whisper import WhisperModel
 from pyannote.audio import Pipeline
@@ -203,6 +204,18 @@ def process():
         print("❌ ERROR:", str(e))
         return jsonify({"error": str(e)}), 500
 
+@app.route("/enquiry", methods=["POST"])
+def enquiry():
+    data = request.json
+
+    name = data.get("name")
+    email = data.get("email")
+    message = data.get("message")
+
+    print("📩 New Enquiry:")
+    print(name, email, message)
+
+    return jsonify({"status": "success"})
 # -------------------------
 # RUN APP
 # -------------------------
